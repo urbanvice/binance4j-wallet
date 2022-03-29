@@ -1,6 +1,6 @@
 package com.binance4j.wallet.client;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.List;
 import java.util.Map;
@@ -34,8 +34,8 @@ import com.binance4j.wallet.withdraw.FastWithdrawSwitchRequest;
 import com.binance4j.wallet.withdraw.WithdrawHistory;
 import com.binance4j.wallet.withdraw.WithdrawHistoryRequest;
 
-import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 public class WalletClientTest {
     WalletClient client;
