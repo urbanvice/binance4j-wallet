@@ -20,7 +20,7 @@ public class FundingAssetRequest extends FramedRequest {
      * @return
      * @param needBtcValuation The new value
      */
-    private boolean needBtcValuation;
+    private Boolean needBtcValuation;
 
     /**
      * Constructor
@@ -45,7 +45,7 @@ public class FundingAssetRequest extends FramedRequest {
      * @param asset            The asset we want the balance
      * @param needBtcValuation Dlo we want the value of the balance in bitcoin?
      */
-    public FundingAssetRequest(String asset, boolean needBtcValuation) {
+    public FundingAssetRequest(String asset, Boolean needBtcValuation) {
         this(asset);
         this.needBtcValuation = needBtcValuation;
     }

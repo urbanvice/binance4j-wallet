@@ -22,7 +22,7 @@ public class AssetDetail {
      * @return The deposit status (false if ALL of networks' are false)
      * @param depositStatus The new value
      */
-    private boolean depositStatus;
+    private Boolean depositStatus;
     /**
      * @return The withdraw fee
      * @param withdrawFee The new value
@@ -32,7 +32,7 @@ public class AssetDetail {
      * @return The withdraw status (false if ALL of networks' are false)
      * @param withdrawStatus The new value
      */
-    private boolean withdrawStatus;
+    private Boolean withdrawStatus;
     /**
      * @return The reason of the status
      * @param depositTip The new value

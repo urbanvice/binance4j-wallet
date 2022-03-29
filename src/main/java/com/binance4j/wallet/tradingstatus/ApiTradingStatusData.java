@@ -15,7 +15,7 @@ public class ApiTradingStatusData {
      * @return API trading function is locked or not
      * @param isLocked The new value
      */
-    private boolean isLocked;
+    private Boolean isLocked;
     /**
      * @return If API trading function is locked, this is the planned recover time
      * @param plannedRecoverTime The new value

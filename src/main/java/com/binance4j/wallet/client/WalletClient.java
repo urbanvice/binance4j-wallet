@@ -59,7 +59,7 @@ public class WalletClient extends RestClient<WalletMapping> {
      * @param secret     The API secret key
      * @param useTestnet Are we using TestNet?
      */
-    public WalletClient(String key, String secret, boolean useTestnet) {
+    public WalletClient(String key, String secret, Boolean useTestnet) {
         super(WalletMapping.class, key, secret, useTestnet);
     }
 

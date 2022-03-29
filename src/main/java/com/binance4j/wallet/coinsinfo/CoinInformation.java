@@ -28,22 +28,22 @@ public class CoinInformation {
 	 * @return The deposit permission
 	 * @param depositAllEnable The new value
 	 */
-	private boolean depositAllEnable;
+	private Boolean depositAllEnable;
 	/**
 	 * @return if the coin is a legal money
 	 * @param isLegalMoney The new value
 	 */
-	private boolean isLegalMoney;
+	private Boolean isLegalMoney;
 	/**
 	 * @return if the coin can be traded
 	 * @param trading The new value
 	 */
-	private boolean trading;
+	private Boolean trading;
 	/**
 	 * @return The withdraw permission
 	 * @param withdrawAllEnable The new value
 	 */
-	private boolean withdrawAllEnable;
+	private Boolean withdrawAllEnable;
 	/**
 	 * @return The free balance
 	 * @param free The new value

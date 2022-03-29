@@ -104,25 +104,25 @@ public class CoinNetworkInformation {
      * @return If deposit is enabled
      * @param depositEnable The new value
      */
-    private boolean depositEnable;
+    private Boolean depositEnable;
     /**
      * @return if is the default network
      * @param isDefault The new value
      */
-    private boolean isDefault;
+    private Boolean isDefault;
     /**
      * @return ?
      * @param resetAddressStatus The new value
      */
-    private boolean resetAddressStatus;
+    private Boolean resetAddressStatus;
     /**
      * @return If withdraw is enabled
      * @param withdrawEnable The new value
      */
-    private boolean withdrawEnable;
+    private Boolean withdrawEnable;
     /**
      * @return If the coin needs to provide memo to withdraw
      * @param sameAddress The new value
      */
-    private boolean sameAddress;
+    private Boolean sameAddress;
 }
