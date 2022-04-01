@@ -57,18 +57,18 @@ public class WithdrawHistory {
 	 * @return 1 for internal transfer, 0 for external transfer
 	 * @param transferType The new value
 	 */
-	private int transferType;
+	private Integer transferType;
 	/**
 	 * @return 0(0:Email Sent,1:Cancelled 2:Awaiting Approval 3:Rejected
 	 *         4:Processing 5:Failure 6:Completed)
 	 * @param status The new value
 	 */
-	private int status;
+	private Integer status;
 	/**
 	 * @return Confirm times for withdraw
 	 * @param confirmNo The new value
 	 */
-	private int confirmNo;
+	private Integer confirmNo;
 	/**
 	 * @return The withdrawn colume
 	 * @param amount The new value

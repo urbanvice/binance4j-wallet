@@ -1,5 +1,6 @@
 package com.binance4j.wallet.client;
 
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.List;
@@ -16,7 +17,6 @@ import com.binance4j.wallet.coinsinfo.CoinInformation;
 import com.binance4j.wallet.deposit.DepositAddress;
 import com.binance4j.wallet.deposit.DepositAddressRequest;
 import com.binance4j.wallet.deposit.DepositHistory;
-import com.binance4j.wallet.deposit.DepositHistoryRequest;
 import com.binance4j.wallet.dust.DustLog;
 import com.binance4j.wallet.dust.DustLogRequest;
 import com.binance4j.wallet.funding.FundingAsset;
@@ -47,12 +47,12 @@ public class WalletClientTest {
     }
 
     @Test
-    @DisplayName("System status should return a response or throw an Exception")
+    @DisplayName("Properties shouldn't be null or throw an Exception")
     public void testGetSystemStatus() {
         try {
             SystemStatus status = client.getSystemStatus().execute();
-            System.out.println(status);
-            assertNotNull(status);
+            assertNotNull(status.getMsg());
+            assertNotNull(status.getStatus());
         } catch (ApiException e) {
             System.out.println(e);
             assertNotNull(e);
@@ -60,12 +60,26 @@ public class WalletClientTest {
     }
 
     @Test
-    @DisplayName("Coins info should return a response or throw an Exception")
+    @DisplayName("Properties shouldn't be null or throw an Exception")
     public void testGetAllCoinsInfo() {
         try {
             List<CoinInformation> infos = client.getAllCoinsInfo().execute();
-            System.out.println(infos);
-            assertNotNull(infos);
+            infos.forEach(i -> {
+                assertNotNull(i.getCoin());
+                assertNotNull(i.getDepositAllEnable());
+                assertNotNull(i.getFree());
+                assertNotNull(i.getFreeze());
+                assertNotNull(i.getIpoable());
+                assertNotNull(i.getIpoing());
+                assertNotNull(i.getIsLegalMoney());
+                assertNotNull(i.getLocked());
+                assertNotNull(i.getName());
+                assertNotNull(i.getNetworkList());
+                assertNotNull(i.getStorage());
+                assertNotNull(i.getTrading());
+                assertNotNull(i.getWithdrawAllEnable());
+                assertNotNull(i.getWithdrawing());
+            });
         } catch (ApiException e) {
             System.out.println(e);
             assertNotNull(e);
@@ -73,12 +87,24 @@ public class WalletClientTest {
     }
 
     @Test
-    @DisplayName("Spot account snapshot should return a response or throw an Exception")
+    @DisplayName("Properties shouldn't be null or throw an Exception")
     public void testGetSpotAccountSnapshot() {
         try {
             SpotAccountSnapshotResponse snapshot = client.getSpotAccountSnapshot().execute();
-            System.out.println(snapshot);
-            assertNotNull(snapshot);
+            assertNotEquals(0, snapshot.getCode());
+            assertNotNull(snapshot.getMsg());
+
+            snapshot.getSnapshotVos().forEach(s -> {
+                s.getData().getBalances().forEach(b -> {
+                    assertNotNull(b.getClass());
+                    assertNotNull(b.getFree());
+                    assertNotNull(b.getLocked());
+                });
+                assertNotNull(s.getData().getTotalAssetOfBtc());
+                assertNotNull(s.getType());
+                assertNotNull(s.getUpdateTime());
+
+            });
         } catch (ApiException e) {
             System.out.println(e);
             assertNotNull(e);
@@ -86,26 +112,29 @@ public class WalletClientTest {
     }
 
     @Test
-    @DisplayName("Margin account snapshot should return a response or throw an Exception or throw code -3003")
+    @DisplayName("Properties shouldn't be null or throw an Exception")
     public void testGetMarginAccountSnapshot() throws InterruptedException, ExecutionException {
         try {
             MarginAccountSnapshotResponse snapshot = client.getMarginAccountSnapshot().execute();
-            System.out.println(snapshot);
-            assertNotNull(snapshot);
-        } catch (ApiException e) {
-            System.out.println(e.getError());
-            assertNotNull(e);
-        }
+            assertNotEquals(0, snapshot.getCode());
+            assertNotNull(snapshot.getMsg());
 
-    }
-
-    @Test
-    @DisplayName("Futures account snapshot should return a response or throw an Exception")
-    public void testGetFuturesAccountSnapshot() {
-        try {
-            FuturesAccountSnapshotResponse snapshot = client.getFuturesAccountSnapshot().execute();
-            System.out.println(snapshot);
-            assertNotNull(snapshot);
+            snapshot.getSnapshotVos().forEach(s -> {
+                assertNotNull(s.getType());
+                assertNotNull(s.getUpdateTime());
+                assertNotNull(s.getData().getMarginLevel());
+                assertNotNull(s.getData().getTotalAssetOfBtc());
+                assertNotNull(s.getData().getTotalLiabilityOfBtc());
+                assertNotNull(s.getData().getTotalNetAssetOfBtc());
+                s.getData().getUserAssets().forEach(ua -> {
+                    assertNotNull(ua.getAsset());
+                    assertNotNull(ua.getBorrowed());
+                    assertNotNull(ua.getFree());
+                    assertNotNull(ua.getInterest());
+                    assertNotNull(ua.getLocked());
+                    assertNotNull(ua.getNetAsset());
+                });
+            });
         } catch (ApiException e) {
             System.out.println(e);
             assertNotNull(e);
@@ -113,7 +142,31 @@ public class WalletClientTest {
     }
 
     @Test
-    @DisplayName("It should not throw an exception")
+    @DisplayName("Properties shouldn't be null or throw an Exception")
+    public void testGetFuturesAccountSnapshot() {
+        try {
+            FuturesAccountSnapshotResponse snapshot = client.getFuturesAccountSnapshot().execute();
+            assertNotEquals(0, snapshot.getCode());
+            assertNotNull(snapshot.getSnapshotVos());
+
+            snapshot.getSnapshotVos().forEach(s -> {
+                assertNotNull(s.getType());
+                assertNotNull(s.getUpdateTime());
+                assertNotNull(s.getData().getPosition());
+                s.getData().getAssets().forEach(a -> {
+                    assertNotNull(a.getAsset());
+                    assertNotNull(a.getMarginBalance());
+                    assertNotNull(a.getWalletBalance());
+                });
+            });
+        } catch (ApiException e) {
+            System.out.println(e);
+            assertNotNull(e);
+        }
+    }
+
+    @Test
+    @DisplayName("Properties shouldn't be null or throw an Exception")
     public void testDisableFastWithdrawSwitch() {
         try {
             client.disableFastWithdrawSwitch(new FastWithdrawSwitchRequest()).execute();
@@ -126,7 +179,7 @@ public class WalletClientTest {
     }
 
     @Test
-    @DisplayName("It should not throw an exception")
+    @DisplayName("Properties shouldn't be null or throw an Exception")
     public void testEnableFastWithdrawSwitch() {
         try {
             client.enableFastWithdrawSwitch(new FastWithdrawSwitchRequest()).execute();
@@ -139,12 +192,23 @@ public class WalletClientTest {
     }
 
     @Test
-    @DisplayName("It should return the deposit history")
+    @DisplayName("Properties shouldn't be null or throw an Exception")
     public void testGetDepositHistory() {
         try {
-            List<DepositHistory> history = client.getDepositHistory(new DepositHistoryRequest()).execute();
-            System.out.println(history);
-            assertNotNull(history);
+            List<DepositHistory> history = client.getDepositHistory().execute();
+            history.forEach(h -> {
+                assertNotNull(h.getAddress());
+                assertNotNull(h.getAddressTag());
+                assertNotNull(h.getAmount());
+                assertNotNull(h.getCoin());
+                assertNotNull(h.getConfirmTimes());
+                assertNotNull(h.getInsertTime());
+                assertNotNull(h.getNetwork());
+                assertNotNull(h.getStatus());
+                assertNotNull(h.getTransferType());
+                assertNotNull(h.getTxId());
+                assertNotNull(h.getUnlockConfirm());
+            });
         } catch (ApiException e) {
             System.out.println(e);
             assertNotNull(e);
@@ -152,12 +216,26 @@ public class WalletClientTest {
     }
 
     @Test
-    @DisplayName("It should return the withdraw history")
+    @DisplayName("Properties shouldn't be null or throw an Exception")
     public void testGetWithdrawHistory() {
         try {
             List<WithdrawHistory> history = client.getWithdrawHistory(new WithdrawHistoryRequest()).execute();
-            System.out.println(history);
-            assertNotNull(history);
+            history.forEach(h -> {
+                assertNotNull(h.getAddress());
+                assertNotNull(h.getAmount());
+                assertNotNull(h.getApplyTime());
+                assertNotNull(h.getCoin());
+                assertNotNull(h.getConfirmNo());
+                assertNotNull(h.getId());
+                assertNotNull(h.getInfo());
+                assertNotNull(h.getNetwork());
+                assertNotNull(h.getStatus());
+                assertNotNull(h.getTransactionFee());
+                assertNotNull(h.getTransferType());
+                assertNotNull(h.getTxId());
+                // not always true
+                // assertNotNull(h.getWithdrawOrderId());
+            });
         } catch (ApiException e) {
             System.out.println(e);
             assertNotNull(e);
@@ -165,12 +243,14 @@ public class WalletClientTest {
     }
 
     @Test
-    @DisplayName("It should return a deposit address")
+    @DisplayName("Properties shouldn't be null or throw an Exception")
     public void testGetDepositAddress() {
         try {
             DepositAddress address = client.getDepositAddress(new DepositAddressRequest("BNB")).execute();
-            System.out.println(address);
-            assertNotNull(address);
+            assertNotNull(address.getAddress());
+            assertNotNull(address.getCoin());
+            assertNotNull(address.getTag());
+            assertNotNull(address.getUrl());
         } catch (ApiException e) {
             System.out.println(e);
             assertNotNull(e);
@@ -178,11 +258,11 @@ public class WalletClientTest {
     }
 
     @Test
+    @DisplayName("Properties shouldn't be null or throw an Exception")
     public void testGetAccountstatus() {
         try {
             AccountStatus status = client.getAccountstatus().execute();
-            System.out.println(status);
-            assertNotNull(status);
+            assertNotNull(status.getData());
         } catch (ApiException e) {
             System.out.println(e);
             assertNotNull(e);
@@ -190,13 +270,18 @@ public class WalletClientTest {
     }
 
     @Test
+    @DisplayName("Properties shouldn't be null or throw an Exception")
     public void testGetApiTradingStatus() {
         ExchangeInfoRequest req = new ExchangeInfoRequest();
         req.getSymbols();
         try {
             ApiTradingStatus status = client.getApiTradingStatus().execute();
-            System.out.println(status);
-            assertNotNull(status);
+            assertNotNull(status.getData().getIsLocked());
+            assertNotNull(status.getData().getPlannedRecoverTime());
+            assertNotNull(status.getData().getTriggerCondition().getGCR());
+            assertNotNull(status.getData().getTriggerCondition().getIFER());
+            assertNotNull(status.getData().getTriggerCondition().getUFR());
+            assertNotNull(status.getData().getUpdateTime());
         } catch (ApiException e) {
             System.out.println(e);
             assertNotNull(e);
@@ -204,11 +289,25 @@ public class WalletClientTest {
     }
 
     @Test
+    @DisplayName("Properties shouldn't be null or throw an Exception")
     public void testGetDustLog() {
         try {
             DustLog log = client.getDustLog(new DustLogRequest()).execute();
-            System.out.println(log);
-            assertNotNull(log);
+            assertNotNull(log.getTotal());
+            log.getUserAssetDribblets().forEach(uad -> {
+                assertNotNull(uad.getOperateTime());
+                assertNotNull(uad.getTotalServiceChargeAmount());
+                assertNotNull(uad.getTotalTransferedAmount());
+                assertNotNull(uad.getTransId());
+                uad.getUserAssetDribbletDetails().forEach(d -> {
+                    assertNotNull(d.getAmount());
+                    assertNotNull(d.getFromAsset());
+                    assertNotNull(d.getOperateTime());
+                    assertNotNull(d.getServiceChargeAmount());
+                    assertNotNull(d.getTransId());
+                    assertNotNull(d.getTransferedAmount());
+                });
+            });
         } catch (ApiException e) {
             System.out.println(e);
             assertNotNull(e);
@@ -219,8 +318,18 @@ public class WalletClientTest {
     public void testGetApiPermissions() {
         try {
             ApiPermissions permissions = client.getApiPermissions().execute();
-            System.out.println(permissions);
-            assertNotNull(permissions);
+            assertNotNull(permissions.getCreateTime());
+            assertNotNull(permissions.getEnableFutures());
+            assertNotNull(permissions.getEnableInternalTransfer());
+            assertNotNull(permissions.getEnableMargin());
+            assertNotNull(permissions.getEnableReading());
+            assertNotNull(permissions.getEnableSpotAndMarginTrading());
+            assertNotNull(permissions.getEnableVanillaOptions());
+            assertNotNull(permissions.getEnableWithdrawals());
+            assertNotNull(permissions.getIpRestrict());
+            assertNotNull(permissions.getPermitsUniversalTransfer());
+            // can be null if not configured to expire
+            // assertNotNull(permissions.getTradingAuthorityExpirationTime());
         } catch (ApiException e) {
             System.out.println(e);
             assertNotNull(e);
@@ -231,8 +340,14 @@ public class WalletClientTest {
     public void testGetAssetDetail() {
         try {
             Map<String, AssetDetail> details = client.getAssetDetail(new AssetDetailRequest()).execute();
-            System.out.println(details);
-            assertNotNull(details);
+            details.values().forEach(v -> {
+                assertNotNull(v.getDepositStatus());
+                // sometimes empty
+                // assertNotNull(v.getDepositTip());
+                assertNotNull(v.getMinWithdrawAmount());
+                assertNotNull(v.getWithdrawFee());
+                assertNotNull(v.getWithdrawStatus());
+            });
         } catch (ApiException e) {
             System.out.println(e);
             assertNotNull(e);
@@ -243,8 +358,15 @@ public class WalletClientTest {
     public void testGetAssetDividend() {
         try {
             AssetDividendRecord record = client.getAssetDividend().execute();
-            System.out.println(record);
-            assertNotNull(record);
+            assertNotNull(record.getTotal());
+            record.getRows().forEach(r -> {
+                assertNotNull(r.getAmount());
+                assertNotNull(r.getAsset());
+                assertNotNull(r.getDivTime());
+                assertNotNull(r.getEnInfo());
+                assertNotNull(r.getId());
+                assertNotNull(r.getTranId());
+            });
         } catch (ApiException e) {
             System.out.println(e);
             assertNotNull(e);
@@ -255,8 +377,14 @@ public class WalletClientTest {
     public void testGetFundingAsset() {
         try {
             List<FundingAsset> fundings = client.getFundingAsset().execute();
-            System.out.println(fundings);
-            assertNotNull(fundings);
+            fundings.forEach(f -> {
+                assertNotNull(f.getAsset());
+                assertNotNull(f.getBtcValuation());
+                assertNotNull(f.getFree());
+                assertNotNull(f.getFreeze());
+                assertNotNull(f.getLocked());
+                assertNotNull(f.getWithdrawing());
+            });
         } catch (ApiException e) {
             System.out.println(e);
             assertNotNull(e);
@@ -267,7 +395,11 @@ public class WalletClientTest {
     public void testGetTradeFee() {
         try {
             List<TradeFee> fees = client.getTradeFee().execute();
-            System.out.println(fees);
+            fees.forEach(f -> {
+                assertNotNull(f.getMakerCommission());
+                assertNotNull(f.getSymbol());
+                assertNotNull(f.getTakerCommission());
+            });
             assertNotNull(fees);
         } catch (ApiException e) {
             System.out.println(e);
@@ -280,8 +412,17 @@ public class WalletClientTest {
         try {
             WalletTransferHistory history = client
                     .getTransferHistory(new WalletTransferHistoryRequest(WalletTransferType.MAIN_FUNDING)).execute();
-            System.out.println(history);
-            assertNotNull(history);
+            assertNotNull(history.getTotal());
+            if (history.getRows() != null) {
+                history.getRows().forEach(r -> {
+                    assertNotNull(r.getAmount());
+                    assertNotNull(r.getAsset());
+                    assertNotNull(r.getStatus());
+                    assertNotNull(r.getTimestamp());
+                    assertNotNull(r.getTranId());
+                    assertNotNull(r.getType());
+                });
+            }
         } catch (ApiException e) {
             System.out.println(e);
             assertNotNull(e);

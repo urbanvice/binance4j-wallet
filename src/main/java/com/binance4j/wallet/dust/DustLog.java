@@ -17,7 +17,7 @@ public class DustLog {
 	 * @return Total counts of exchange
 	 * @param total The new value
 	 */
-	private int total;
+	private Integer total;
 	/**
 	 * @return ???
 	 * @param userAssetDribblets The new value

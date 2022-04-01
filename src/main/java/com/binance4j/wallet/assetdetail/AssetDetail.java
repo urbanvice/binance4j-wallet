@@ -27,7 +27,7 @@ public class AssetDetail {
      * @return The withdraw fee
      * @param withdrawFee The new value
      */
-    private float withdrawFee;
+    private Float withdrawFee;
     /**
      * @return The withdraw status (false if ALL of networks' are false)
      * @param withdrawStatus The new value

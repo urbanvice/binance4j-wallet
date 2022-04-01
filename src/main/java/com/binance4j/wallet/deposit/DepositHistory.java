@@ -57,15 +57,15 @@ public class DepositHistory {
 	 * @return The withdraw status
 	 * @param status The new value
 	 */
-	private int status;
+	private Integer status;
 	/**
 	 * @return confirm times for insertion (?)
 	 * @param insertTime The new value
 	 */
-	private long insertTime;
+	private Long insertTime;
 	/**
 	 * @return The transfer type. 1 for internal transfer, 0 for external transfer
 	 * @param transferType The new value
 	 */
-	private int transferType;
+	private Integer transferType;
 }
