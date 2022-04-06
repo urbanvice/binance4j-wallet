@@ -48,7 +48,7 @@
   </developers>
 
   <scm>
-    <url>https://github.com/binance4j/binance4j-wallet.git</url>
+    <url>${repository.url}.git</url>
   </scm>
 
   <dependencies>
