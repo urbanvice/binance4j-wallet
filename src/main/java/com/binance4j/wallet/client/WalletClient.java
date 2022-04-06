@@ -31,7 +31,6 @@ import com.binance4j.wallet.snapshot.futures.FuturesAccountSnapshotResponse;
 import com.binance4j.wallet.snapshot.margin.MarginAccountSnapshotResponse;
 import com.binance4j.wallet.snapshot.spot.SpotAccountSnapshotResponse;
 import com.binance4j.wallet.systemstatus.SystemStatus;
-import com.binance4j.wallet.systemstatus.SystemStatusRequest;
 import com.binance4j.wallet.tradefee.TradeFee;
 import com.binance4j.wallet.tradefee.TradeFeeRequest;
 import com.binance4j.wallet.tradingstatus.ApiTradingStatus;
@@ -81,19 +80,19 @@ public class WalletClient extends RestClient<WalletMapping> {
      * @return The executor permitting sync/async API call
      */
     public RequestExecutor<SystemStatus> getSystemStatus() {
-        return new RequestExecutor<>(service.getSystemStatus(), new SystemStatusRequest());
+        return new RequestExecutor<>(getApis().stream().map(WalletMapping::getSystemStatus).toList());
     }
 
     /**
      * Gets information of coins (available for deposit and withdraw) for user.
      * 
-     * @param request The custom request
+     * @param req The custom request
      * @see <a href=
      *      "https://binance-docs.github.io/apidocs/spot/en/#all-coins-39-information-user_data">Documentation</a>
      * @return The executor permitting sync/async API call
      */
-    public RequestExecutor<List<CoinInformation>> getAllCoinsInfo(CoinInformationRequest request) {
-        return new RequestExecutor<>(service.getAllCoinsInfo(pojoToMap(request)), request);
+    public RequestExecutor<List<CoinInformation>> getAllCoinsInfo(CoinInformationRequest req) {
+        return new RequestExecutor<>(getApis().stream().map(a -> a.getAllCoinsInfo(pojoToMap(req))).toList());
     }
 
     /**
@@ -110,15 +109,15 @@ public class WalletClient extends RestClient<WalletMapping> {
     /**
      * Fetches the daily SPOT account snapshots.
      * 
-     * @param request The custom request
+     * @param req The custom request
      * @see <a href=
      *      "https://binance-docs.github.io/apidocs/spot/en/#daily-account-snapshot-user_data">Documentation</a>
      * @return The executor permitting sync/async API call
      * 
      */
-    public RequestExecutor<SpotAccountSnapshotResponse> getSpotAccountSnapshot(AccountSnapshotRequest request) {
-        return new RequestExecutor<>(service.getSpotAccountSnapshot(AccountSnapshotType.SPOT, pojoToMap(request)),
-                request);
+    public RequestExecutor<SpotAccountSnapshotResponse> getSpotAccountSnapshot(AccountSnapshotRequest req) {
+        return new RequestExecutor<>(getApis().stream()
+                .map(a -> a.getSpotAccountSnapshot(AccountSnapshotType.SPOT, pojoToMap(req))).toList());
     }
 
     /**
@@ -141,9 +140,9 @@ public class WalletClient extends RestClient<WalletMapping> {
      * @return The executor permitting sync/async API call
      * 
      */
-    public RequestExecutor<MarginAccountSnapshotResponse> getMarginAccountSnapshot(AccountSnapshotRequest request) {
-        return new RequestExecutor<>(service.getMarginAccountSnapshot(AccountSnapshotType.MARGIN, pojoToMap(request)),
-                request);
+    public RequestExecutor<MarginAccountSnapshotResponse> getMarginAccountSnapshot(AccountSnapshotRequest req) {
+        return new RequestExecutor<>(getApis().stream()
+                .map(a -> a.getMarginAccountSnapshot(AccountSnapshotType.MARGIN, pojoToMap(req))).toList());
     }
 
     /**
@@ -166,9 +165,9 @@ public class WalletClient extends RestClient<WalletMapping> {
      * @return The executor permitting sync/async API call
      * 
      */
-    public RequestExecutor<FuturesAccountSnapshotResponse> getFuturesAccountSnapshot(AccountSnapshotRequest request) {
-        return new RequestExecutor<>(service.getFuturesAccountSnapshot(AccountSnapshotType.FUTURES,
-                pojoToMap(request)), request);
+    public RequestExecutor<FuturesAccountSnapshotResponse> getFuturesAccountSnapshot(AccountSnapshotRequest req) {
+        return new RequestExecutor<>(getApis().stream()
+                .map(a -> a.getFuturesAccountSnapshot(AccountSnapshotType.FUTURES, pojoToMap(req))).toList());
     }
 
     /**
@@ -195,8 +194,9 @@ public class WalletClient extends RestClient<WalletMapping> {
      * @return The executor permitting sync/async API call
      * 
      */
-    public RequestExecutor<Void> disableFastWithdrawSwitch(FastWithdrawSwitchRequest request) {
-        return new RequestExecutor<>(service.disableFastWithdrawSwitch(pojoToMap(request)), request);
+    public RequestExecutor<Void> disableFastWithdrawSwitch(FastWithdrawSwitchRequest req) {
+        return new RequestExecutor<>(getApis().stream()
+                .map(a -> a.disableFastWithdrawSwitch(pojoToMap(req))).toList());
     }
 
     /**
@@ -227,8 +227,9 @@ public class WalletClient extends RestClient<WalletMapping> {
      *      "https://binance-docs.github.io/apidocs/spot/en/#enable-fast-withdraw-switch-user_data">Documentation</a>
      * @return The executor permitting sync/async API call
      */
-    public RequestExecutor<Void> enableFastWithdrawSwitch(FastWithdrawSwitchRequest request) {
-        return new RequestExecutor<>(service.enableFastWithdrawSwitch(pojoToMap(request)), request);
+    public RequestExecutor<Void> enableFastWithdrawSwitch(FastWithdrawSwitchRequest req) {
+        return new RequestExecutor<>(getApis().stream()
+                .map(a -> a.enableFastWithdrawSwitch(pojoToMap(req))).toList());
     }
 
     /**
@@ -253,8 +254,9 @@ public class WalletClient extends RestClient<WalletMapping> {
      *      "https://binance-docs.github.io/apidocs/spot/en/#withdraw-user_data">Documentation</a>
      * @return The executor permitting sync/async API call
      */
-    public RequestExecutor<WithdrawResult> withdraw(WithdrawRequest request) {
-        return new RequestExecutor<>(service.withdraw(pojoToMap(request)), request);
+    public RequestExecutor<WithdrawResult> withdraw(WithdrawRequest req) {
+        return new RequestExecutor<>(getApis().stream()
+                .map(a -> a.withdraw(pojoToMap(req))).toList());
     }
 
     /**
@@ -280,8 +282,9 @@ public class WalletClient extends RestClient<WalletMapping> {
      *      "https://binance-docs.github.io/apidocs/spot/en/#deposit-history-supporting-network-user_data">Documentation</a>
      * @return The executor permitting sync/async API call
      */
-    public RequestExecutor<List<DepositHistory>> getDepositHistory(DepositHistoryRequest request) {
-        return new RequestExecutor<>(service.getDepositHistory(pojoToMap(request)), request);
+    public RequestExecutor<List<DepositHistory>> getDepositHistory(DepositHistoryRequest req) {
+        return new RequestExecutor<>(getApis().stream()
+                .map(a -> a.getDepositHistory(pojoToMap(req))).toList());
     }
 
     /**
@@ -318,9 +321,9 @@ public class WalletClient extends RestClient<WalletMapping> {
      * @return The executor permitting sync/async API call
      * 
      */
-    public RequestExecutor<List<WithdrawHistory>> getWithdrawHistory(WithdrawHistoryRequest request) {
-        return new RequestExecutor<>(service.getWithdrawHistory(pojoToMap(request)), request);
-
+    public RequestExecutor<List<WithdrawHistory>> getWithdrawHistory(WithdrawHistoryRequest req) {
+        return new RequestExecutor<>(getApis().stream()
+                .map(a -> a.getWithdrawHistory(pojoToMap(req))).toList());
     }
 
     /**
@@ -354,8 +357,9 @@ public class WalletClient extends RestClient<WalletMapping> {
      *      Documentation </a>
      * @return The executor permitting sync/async API call
      */
-    public RequestExecutor<DepositAddress> getDepositAddress(DepositAddressRequest request) {
-        return new RequestExecutor<>(service.getDepositAddress(pojoToMap(request)), request);
+    public RequestExecutor<DepositAddress> getDepositAddress(DepositAddressRequest req) {
+        return new RequestExecutor<>(getApis().stream()
+                .map(a -> a.getDepositAddress(pojoToMap(req))).toList());
     }
 
     /**
@@ -367,8 +371,9 @@ public class WalletClient extends RestClient<WalletMapping> {
      *      Documentation </a>
      * @return The executor permitting sync/async API call
      */
-    public RequestExecutor<AccountStatus> getAccountstatus(AccountStatusRequest request) {
-        return new RequestExecutor<>(service.getAccountstatus(pojoToMap(request)), request);
+    public RequestExecutor<AccountStatus> getAccountstatus(AccountStatusRequest req) {
+        return new RequestExecutor<>(getApis().stream()
+                .map(a -> a.getAccountstatus(pojoToMap(req))).toList());
     }
 
     /**
@@ -390,8 +395,9 @@ public class WalletClient extends RestClient<WalletMapping> {
      *      Documentation </a>
      * @return The executor permitting sync/async API call
      */
-    public RequestExecutor<ApiTradingStatus> getApiTradingStatus(ApiTradingStatusRequest request) {
-        return new RequestExecutor<>(service.getApiTradingStatus(pojoToMap(request)), request);
+    public RequestExecutor<ApiTradingStatus> getApiTradingStatus(ApiTradingStatusRequest req) {
+        return new RequestExecutor<>(getApis().stream()
+                .map(a -> a.getApiTradingStatus(pojoToMap(req))).toList());
     }
 
     /**
@@ -413,8 +419,9 @@ public class WalletClient extends RestClient<WalletMapping> {
      *      Documentation </a>
      * @return The executor permitting sync/async API call
      */
-    public RequestExecutor<DustLog> getDustLog(DustLogRequest request) {
-        return new RequestExecutor<>(service.getDustLog(pojoToMap(request)), request);
+    public RequestExecutor<DustLog> getDustLog(DustLogRequest req) {
+        return new RequestExecutor<>(getApis().stream()
+                .map(a -> a.getDustLog(pojoToMap(req))).toList());
     }
 
     /**
@@ -436,8 +443,9 @@ public class WalletClient extends RestClient<WalletMapping> {
      *      Documentation </a>
      * @return The executor permitting sync/async API call
      */
-    public RequestExecutor<DustTransferResponse> dustTransfert(DustTransferRequest request) {
-        return new RequestExecutor<>(service.dustTransfert(pojoToMap(request)), request);
+    public RequestExecutor<DustTransferResponse> dustTransfert(DustTransferRequest req) {
+        return new RequestExecutor<>(getApis().stream()
+                .map(a -> a.dustTransfert(pojoToMap(req))).toList());
     }
 
     /**
@@ -450,8 +458,9 @@ public class WalletClient extends RestClient<WalletMapping> {
      * @return The executor permitting sync/async API call
      * 
      */
-    public RequestExecutor<AssetDividendRecord> getAssetDividend(AssetDividendRecordRequest request) {
-        return new RequestExecutor<>(service.getAssetDividendRecord(pojoToMap(request)), request);
+    public RequestExecutor<AssetDividendRecord> getAssetDividendRecord(AssetDividendRecordRequest req) {
+        return new RequestExecutor<>(getApis().stream()
+                .map(a -> a.getAssetDividendRecord(pojoToMap(req))).toList());
     }
 
     /**
@@ -461,8 +470,8 @@ public class WalletClient extends RestClient<WalletMapping> {
      * @return The executor permitting sync/async API call
      * 
      */
-    public RequestExecutor<AssetDividendRecord> getAssetDividend() {
-        return getAssetDividend(new AssetDividendRecordRequest());
+    public RequestExecutor<AssetDividendRecord> getAssetDividendRecord() {
+        return getAssetDividendRecord(new AssetDividendRecordRequest());
     }
 
     /**
@@ -476,8 +485,9 @@ public class WalletClient extends RestClient<WalletMapping> {
      *      Documentation </a>
      * @return The executor permitting sync/async API call
      */
-    public RequestExecutor<Map<String, AssetDetail>> getAssetDetail(AssetDetailRequest request) {
-        return new RequestExecutor<>(service.getAssetDetail(pojoToMap(request)), request);
+    public RequestExecutor<Map<String, AssetDetail>> getAssetDetail(AssetDetailRequest req) {
+        return new RequestExecutor<>(getApis().stream()
+                .map(a -> a.getAssetDetail(pojoToMap(req))).toList());
     }
 
     /**
@@ -499,8 +509,9 @@ public class WalletClient extends RestClient<WalletMapping> {
      *      Documentation </a>
      * @return The executor permitting sync/async API call
      */
-    public RequestExecutor<List<TradeFee>> getTradeFee(TradeFeeRequest request) {
-        return new RequestExecutor<>(service.getTradeFee(pojoToMap(request)), request);
+    public RequestExecutor<List<TradeFee>> getTradeFee(TradeFeeRequest req) {
+        return new RequestExecutor<>(getApis().stream()
+                .map(a -> a.getTradeFee(pojoToMap(req))).toList());
     }
 
     /**
@@ -536,8 +547,9 @@ public class WalletClient extends RestClient<WalletMapping> {
      *      Documentation </a>
      * @return The executor permitting sync/async API call
      */
-    public RequestExecutor<WalletTransferResponse> transfer(WalletTransferRequest request) {
-        return new RequestExecutor<>(service.transfer(pojoToMap(request)), request);
+    public RequestExecutor<WalletTransferResponse> transfer(WalletTransferRequest req) {
+        return new RequestExecutor<>(getApis().stream()
+                .map(a -> a.transfer(pojoToMap(req))).toList());
     }
 
     /**
@@ -567,8 +579,9 @@ public class WalletClient extends RestClient<WalletMapping> {
      *      Documentation </a>
      * @return The executor permitting sync/async API call
      */
-    public RequestExecutor<WalletTransferHistory> getTransferHistory(WalletTransferHistoryRequest request) {
-        return new RequestExecutor<>(service.getTransferHistory(pojoToMap(request)), request);
+    public RequestExecutor<WalletTransferHistory> getTransferHistory(WalletTransferHistoryRequest req) {
+        return new RequestExecutor<>(getApis().stream()
+                .map(a -> a.getTransferHistory(pojoToMap(req))).toList());
     }
 
     /**
@@ -583,8 +596,9 @@ public class WalletClient extends RestClient<WalletMapping> {
      *      Documentation </a>
      * @return The executor permitting sync/async API call
      */
-    public RequestExecutor<List<FundingAsset>> getFundingAsset(FundingAssetRequest request) {
-        return new RequestExecutor<>(service.getFundingAsset(pojoToMap(request)), request);
+    public RequestExecutor<List<FundingAsset>> getFundingAsset(FundingAssetRequest req) {
+        return new RequestExecutor<>(getApis().stream()
+                .map(a -> a.getFundingAsset(pojoToMap(req))).toList());
     }
 
     /**
@@ -600,14 +614,15 @@ public class WalletClient extends RestClient<WalletMapping> {
     /**
      * Fetches the API Key Permission
      * 
-     * @param request The custom request
+     * @param req The custom request
      * @see <a href=
      *      "https://binance-docs.github.io/apidocs/spot/en/#get-api-key-permission-user_data">
      *      Documentation </a>
      * @return The executor permitting sync/async API call
      */
-    public RequestExecutor<ApiPermissions> getApiPermissions(ApiPermissionsRequest request) {
-        return new RequestExecutor<>(service.getApiPermissions(pojoToMap(request)), request);
+    public RequestExecutor<ApiPermissions> getApiPermissions(ApiPermissionsRequest req) {
+        return new RequestExecutor<>(getApis().stream()
+                .map(a -> a.getApiPermissions(pojoToMap(req))).toList());
     }
 
     /**

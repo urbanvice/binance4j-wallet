@@ -357,7 +357,7 @@ public class WalletClientTest {
     @Test
     public void testGetAssetDividend() {
         try {
-            AssetDividendRecord record = client.getAssetDividend().execute();
+            AssetDividendRecord record = client.getAssetDividendRecord().execute();
             assertNotNull(record.getTotal());
             record.getRows().forEach(r -> {
                 assertNotNull(r.getAmount());
