@@ -134,7 +134,7 @@ public class WalletClient extends RestClient<WalletMapping> {
     /**
      * Fetches the daily MARGIN account snapshots
      * 
-     * @param request The custom request
+     * @param req The custom request
      * @see <a href=
      *      "https://binance-docs.github.io/apidocs/spot/en/#daily-account-snapshot-user_data">Documentation</a>
      * @return The executor permitting sync/async API call
@@ -159,7 +159,7 @@ public class WalletClient extends RestClient<WalletMapping> {
     /**
      * Fetches the daily FUTURES account snapshots
      * 
-     * @param request The custom request
+     * @param req The custom request
      * @see <a href=
      *      "https://binance-docs.github.io/apidocs/spot/en/#daily-account-snapshot-user_data">Documentation</a>
      * @return The executor permitting sync/async API call
@@ -187,7 +187,7 @@ public class WalletClient extends RestClient<WalletMapping> {
      * You need to enable {@code trade} option for the api key which
      * requests this endpoint.
      * 
-     * @param request The custom request
+     * @param req The custom request
      * 
      * @see <a href=
      *      "https://binance-docs.github.io/apidocs/spot/en/#disable-fast-withdraw-switch-user_data">Documentation</a>
@@ -222,7 +222,7 @@ public class WalletClient extends RestClient<WalletMapping> {
      * </li>
      * </ul>
      * 
-     * @param request The custom request
+     * @param req The custom request
      * @see <a href=
      *      "https://binance-docs.github.io/apidocs/spot/en/#enable-fast-withdraw-switch-user_data">Documentation</a>
      * @return The executor permitting sync/async API call
@@ -249,7 +249,7 @@ public class WalletClient extends RestClient<WalletMapping> {
      * You can get {@code network</code> and <code>isDefault} in
      * networkList of a coin in the response of {@link #getAllCoinsInfo()}
      * 
-     * @param request The custom request
+     * @param req The custom request
      * @see <a href=
      *      "https://binance-docs.github.io/apidocs/spot/en/#withdraw-user_data">Documentation</a>
      * @return The executor permitting sync/async API call
@@ -276,7 +276,7 @@ public class WalletClient extends RestClient<WalletMapping> {
      * </li>
      * </ul>
      * 
-     * @param request The custom request
+     * @param req The custom request
      * 
      * @see <a href=
      *      "https://binance-docs.github.io/apidocs/spot/en/#deposit-history-supporting-network-user_data">Documentation</a>
@@ -315,7 +315,7 @@ public class WalletClient extends RestClient<WalletMapping> {
      * </li>
      * </ul>
      * 
-     * @param request The custom request
+     * @param req The custom request
      * @see <a href=
      *      "https://binance-docs.github.io/apidocs/spot/en/#withdraw-history-supporting-network-user_data">Documentation</a>
      * @return The executor permitting sync/async API call
@@ -351,7 +351,7 @@ public class WalletClient extends RestClient<WalletMapping> {
      * </li>
      * </ul>
      * 
-     * @param request The custom request
+     * @param req The custom request
      * @see <a href=
      *      "https://binance-docs.github.io/apidocs/spot/en/#deposit-address-supporting-network-user_data">
      *      Documentation </a>
@@ -365,7 +365,7 @@ public class WalletClient extends RestClient<WalletMapping> {
     /**
      * Fetches the account status detail.
      * 
-     * @param request The custom request
+     * @param req The custom request
      * @see <a href=
      *      "https://binance-docs.github.io/apidocs/spot/en/#deposit-address-supporting-network-user_data">
      *      Documentation </a>
@@ -389,7 +389,7 @@ public class WalletClient extends RestClient<WalletMapping> {
     /**
      * Fetches the account api trading status detail.
      * 
-     * @param request The custom request
+     * @param req The custom request
      * @see <a href=
      *      "https://binance-docs.github.io/apidocs/spot/en/#account-api-trading-status-user_data">
      *      Documentation </a>
@@ -413,7 +413,7 @@ public class WalletClient extends RestClient<WalletMapping> {
     /**
      * Fetches the dust tranfer logs
      * 
-     * @param request The custom request
+     * @param req The custom request
      * @see <a href=
      *      "https://binance-docs.github.io/apidocs/spot/en/#dustlog-user_data">
      *      Documentation </a>
@@ -437,7 +437,7 @@ public class WalletClient extends RestClient<WalletMapping> {
     /**
      * Convert dust assets to BNB.
      * 
-     * @param request The custom request
+     * @param req The custom request
      * @see <a href=
      *      "https://binance-docs.github.io/apidocs/spot/en/#dust-transfer-user_data">
      *      Documentation </a>
@@ -451,7 +451,7 @@ public class WalletClient extends RestClient<WalletMapping> {
     /**
      * Queries the dividend record of one or multiple assets.
      * 
-     * @param request The custom request
+     * @param req The custom request
      * @see <a href=
      *      "https://binance-docs.github.io/apidocs/spot/en/#asset-dividend-record-user_data">
      *      Documentation </a>
@@ -466,7 +466,6 @@ public class WalletClient extends RestClient<WalletMapping> {
     /**
      * Queries the last 20 dividend asset records
      * 
-     * @see #getAssetDividend(AssetDividendRecordRequest)
      * @return The executor permitting sync/async API call
      * 
      */
@@ -479,7 +478,7 @@ public class WalletClient extends RestClient<WalletMapping> {
      * Please get network and other deposit or withdraw details from
      * {@link #getAllCoinsInfo()}
      * 
-     * @param request The custom request
+     * @param req The custom request
      * @see <a href=
      *      "https://binance-docs.github.io/apidocs/spot/en/#asset-detail-user_data">
      *      Documentation </a>
@@ -503,7 +502,7 @@ public class WalletClient extends RestClient<WalletMapping> {
     /**
      * Fetches the trade fee
      * 
-     * @param request The custom request
+     * @param req The custom request
      * @see <a href=
      *      "https://binance-docs.github.io/apidocs/spot/en/#trade-fee-user_data">
      *      Documentation </a>
@@ -541,7 +540,7 @@ public class WalletClient extends RestClient<WalletMapping> {
      * </li>
      * </ul>
      * 
-     * @param request The custom request
+     * @param req The custom request
      * @see <a href=
      *      "https://binance-docs.github.io/apidocs/spot/en/#user-universal-transfer-user_data">
      *      Documentation </a>
@@ -572,7 +571,7 @@ public class WalletClient extends RestClient<WalletMapping> {
      * </li>
      * </ul>
      * 
-     * @param request The custom request
+     * @param req The custom request
      * 
      * @see <a href=
      *      "https://binance-docs.github.io/apidocs/spot/en/#query-user-universal-transfer-history-user_data">
@@ -590,7 +589,7 @@ public class WalletClient extends RestClient<WalletMapping> {
      * Currently supports querying the following business assets：Binance
      * Pay, Binance Card, Binance Gift Card, Stock Token
      * 
-     * @param request The custom request
+     * @param req The custom request
      * @see <a href=
      *      "https://binance-docs.github.io/apidocs/spot/en/#query-user-universal-transfer-history-user_data">
      *      Documentation </a>

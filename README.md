@@ -10,7 +10,7 @@ Binance4j-wallet is a Java library providing an API for interacting with the Bin
 <dependency>
   <groupId>com.binance4j</groupId>
   <artifactId>binance4j-wallet</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
 </dependency>
 ```
 
