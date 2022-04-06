@@ -4,12 +4,21 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.binance4j</groupId>
   <artifactId>binance4j-wallet</artifactId>
-  <version>1.0.1</version>
+  <version>${binance4j.version}</version>
   <packaging>jar</packaging>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <binance4j.version>1.0.3</binance4j.version>
+    <repository.url>https://github.com/binance4j/binance4j-wallet</repository.url>
+  </properties>
 
   <name>binance4j-wallet</name>
   <description>A client to communicate with the Binance API Wallet endpoints</description>
-  <url>https://github.com/binance4j/binance4j-wallet</url>
+  <url>${repository.url}</url>
+
   <licenses>
     <license>
       <name>MIT License</name>
@@ -17,6 +26,7 @@
       <distribution>repo</distribution>
     </license>
   </licenses>
+
   <distributionManagement>
     <snapshotRepository>
       <id>ossrh</id>
@@ -40,17 +50,12 @@
   <scm>
     <url>https://github.com/binance4j/binance4j-wallet.git</url>
   </scm>
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <maven.compiler.target>1.8</maven.compiler.target>
-  </properties>
 
   <dependencies>
     <dependency>
       <groupId>com.binance4j</groupId>
       <artifactId>binance4j-core</artifactId>
-      <version>1.0.1</version>
+      <version>${binance4j.version}</version>
     </dependency>
   </dependencies>
 
