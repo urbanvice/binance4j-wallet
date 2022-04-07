@@ -253,7 +253,7 @@ List<TradeFee> fees = client.getTradeFee().execute();
 
 ### Fetch the user universal transfer history
 
-[Binance Documentation]()
+[Binance Documentation](https://binance-docs.github.io/apidocs/spot/en/#query-user-universal-transfer-history-user_data)
 
 ```java
 WalletTransferHistoryRequest req = new WalletTransferHistoryRequest(WalletTransferType.MAIN_FUNDING);
