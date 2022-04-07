@@ -411,7 +411,7 @@ public class WalletClient extends RestClient<WalletMapping> {
     }
 
     /**
-     * Fetches the dust tranfer logs
+     * Fetches the dust transfer logs
      * 
      * @param req The custom request
      * @see <a href=
@@ -425,7 +425,7 @@ public class WalletClient extends RestClient<WalletMapping> {
     }
 
     /**
-     * Fetches the dust tranfer logs with default paramters
+     * Fetches the dust transfer logs with default paramters
      * 
      * @see #getDustLog(DustLogRequest)
      * @return The executor permitting sync/async API call

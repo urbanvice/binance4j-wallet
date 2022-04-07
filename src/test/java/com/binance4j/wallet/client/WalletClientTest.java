@@ -11,7 +11,6 @@ import com.binance4j.core.exception.ApiException;
 import com.binance4j.core.exchangeinfo.ExchangeInfoRequest;
 import com.binance4j.wallet.accountstatus.AccountStatus;
 import com.binance4j.wallet.assetdetail.AssetDetail;
-import com.binance4j.wallet.assetdetail.AssetDetailRequest;
 import com.binance4j.wallet.assetdividendrecord.AssetDividendRecord;
 import com.binance4j.wallet.coinsinfo.CoinInformation;
 import com.binance4j.wallet.deposit.DepositAddress;
@@ -32,7 +31,6 @@ import com.binance4j.wallet.transfer.WalletTransferHistoryRequest;
 import com.binance4j.wallet.transfer.WalletTransferType;
 import com.binance4j.wallet.withdraw.FastWithdrawSwitchRequest;
 import com.binance4j.wallet.withdraw.WithdrawHistory;
-import com.binance4j.wallet.withdraw.WithdrawHistoryRequest;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -219,7 +217,7 @@ public class WalletClientTest {
     @DisplayName("Properties shouldn't be null or throw an Exception")
     public void testGetWithdrawHistory() {
         try {
-            List<WithdrawHistory> history = client.getWithdrawHistory(new WithdrawHistoryRequest()).execute();
+            List<WithdrawHistory> history = client.getWithdrawHistory().execute();
             history.forEach(h -> {
                 assertNotNull(h.getAddress());
                 assertNotNull(h.getAmount());
@@ -314,6 +312,7 @@ public class WalletClientTest {
         }
     }
 
+
     @Test
     public void testGetApiPermissions() {
         try {
@@ -339,7 +338,7 @@ public class WalletClientTest {
     @Test
     public void testGetAssetDetail() {
         try {
-            Map<String, AssetDetail> details = client.getAssetDetail(new AssetDetailRequest()).execute();
+            Map<String, AssetDetail> details = client.getAssetDetail().execute();
             details.values().forEach(v -> {
                 assertNotNull(v.getDepositStatus());
                 // sometimes empty
