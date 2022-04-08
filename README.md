@@ -260,6 +260,4 @@ WalletTransferHistoryRequest req = new WalletTransferHistoryRequest(WalletTransf
 WalletTransferHistory history = client.getTransferHistory(req).execute();
 ```
 
-## Javadoc
-
-[Javadoc can be found here](https://binance4j.github.io/binance4j-wallet/)
+[Javadoc](https://binance4j.github.io/binance4j-wallet/)
