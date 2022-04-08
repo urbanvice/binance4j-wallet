@@ -92,7 +92,7 @@ public class WalletClient extends RestClient<WalletMapping> {
      * @return The executor permitting sync/async API call
      */
     public RequestExecutor<List<CoinInformation>> getAllCoinsInfo(CoinInformationRequest req) {
-        return new RequestExecutor<>(getApis().stream().map(a -> a.getAllCoinsInfo(pojoToMap(req))).toList());
+        return new RequestExecutor<>(getApis().stream().map(a -> a.getAllCoinsInfo(pojoToMap(req))).toList(), req);
     }
 
     /**
@@ -117,7 +117,7 @@ public class WalletClient extends RestClient<WalletMapping> {
      */
     public RequestExecutor<SpotAccountSnapshotResponse> getSpotAccountSnapshot(AccountSnapshotRequest req) {
         return new RequestExecutor<>(getApis().stream()
-                .map(a -> a.getSpotAccountSnapshot(AccountSnapshotType.SPOT, pojoToMap(req))).toList());
+                .map(a -> a.getSpotAccountSnapshot(AccountSnapshotType.SPOT, pojoToMap(req))).toList(), req);
     }
 
     /**
@@ -142,7 +142,7 @@ public class WalletClient extends RestClient<WalletMapping> {
      */
     public RequestExecutor<MarginAccountSnapshotResponse> getMarginAccountSnapshot(AccountSnapshotRequest req) {
         return new RequestExecutor<>(getApis().stream()
-                .map(a -> a.getMarginAccountSnapshot(AccountSnapshotType.MARGIN, pojoToMap(req))).toList());
+                .map(a -> a.getMarginAccountSnapshot(AccountSnapshotType.MARGIN, pojoToMap(req))).toList(), req);
     }
 
     /**
@@ -167,7 +167,7 @@ public class WalletClient extends RestClient<WalletMapping> {
      */
     public RequestExecutor<FuturesAccountSnapshotResponse> getFuturesAccountSnapshot(AccountSnapshotRequest req) {
         return new RequestExecutor<>(getApis().stream()
-                .map(a -> a.getFuturesAccountSnapshot(AccountSnapshotType.FUTURES, pojoToMap(req))).toList());
+                .map(a -> a.getFuturesAccountSnapshot(AccountSnapshotType.FUTURES, pojoToMap(req))).toList(), req);
     }
 
     /**
@@ -196,7 +196,7 @@ public class WalletClient extends RestClient<WalletMapping> {
      */
     public RequestExecutor<Void> disableFastWithdrawSwitch(FastWithdrawSwitchRequest req) {
         return new RequestExecutor<>(getApis().stream()
-                .map(a -> a.disableFastWithdrawSwitch(pojoToMap(req))).toList());
+                .map(a -> a.disableFastWithdrawSwitch(pojoToMap(req))).toList(), req);
     }
 
     /**
@@ -229,7 +229,7 @@ public class WalletClient extends RestClient<WalletMapping> {
      */
     public RequestExecutor<Void> enableFastWithdrawSwitch(FastWithdrawSwitchRequest req) {
         return new RequestExecutor<>(getApis().stream()
-                .map(a -> a.enableFastWithdrawSwitch(pojoToMap(req))).toList());
+                .map(a -> a.enableFastWithdrawSwitch(pojoToMap(req))).toList(), req);
     }
 
     /**
@@ -256,7 +256,7 @@ public class WalletClient extends RestClient<WalletMapping> {
      */
     public RequestExecutor<WithdrawResult> withdraw(WithdrawRequest req) {
         return new RequestExecutor<>(getApis().stream()
-                .map(a -> a.withdraw(pojoToMap(req))).toList());
+                .map(a -> a.withdraw(pojoToMap(req))).toList(), req);
     }
 
     /**
@@ -284,7 +284,7 @@ public class WalletClient extends RestClient<WalletMapping> {
      */
     public RequestExecutor<List<DepositHistory>> getDepositHistory(DepositHistoryRequest req) {
         return new RequestExecutor<>(getApis().stream()
-                .map(a -> a.getDepositHistory(pojoToMap(req))).toList());
+                .map(a -> a.getDepositHistory(pojoToMap(req))).toList(), req);
     }
 
     /**
@@ -323,7 +323,7 @@ public class WalletClient extends RestClient<WalletMapping> {
      */
     public RequestExecutor<List<WithdrawHistory>> getWithdrawHistory(WithdrawHistoryRequest req) {
         return new RequestExecutor<>(getApis().stream()
-                .map(a -> a.getWithdrawHistory(pojoToMap(req))).toList());
+                .map(a -> a.getWithdrawHistory(pojoToMap(req))).toList(), req);
     }
 
     /**
@@ -359,7 +359,7 @@ public class WalletClient extends RestClient<WalletMapping> {
      */
     public RequestExecutor<DepositAddress> getDepositAddress(DepositAddressRequest req) {
         return new RequestExecutor<>(getApis().stream()
-                .map(a -> a.getDepositAddress(pojoToMap(req))).toList());
+                .map(a -> a.getDepositAddress(pojoToMap(req))).toList(), req);
     }
 
     /**
@@ -373,7 +373,7 @@ public class WalletClient extends RestClient<WalletMapping> {
      */
     public RequestExecutor<AccountStatus> getAccountstatus(AccountStatusRequest req) {
         return new RequestExecutor<>(getApis().stream()
-                .map(a -> a.getAccountstatus(pojoToMap(req))).toList());
+                .map(a -> a.getAccountstatus(pojoToMap(req))).toList(), req);
     }
 
     /**
@@ -397,7 +397,7 @@ public class WalletClient extends RestClient<WalletMapping> {
      */
     public RequestExecutor<ApiTradingStatus> getApiTradingStatus(ApiTradingStatusRequest req) {
         return new RequestExecutor<>(getApis().stream()
-                .map(a -> a.getApiTradingStatus(pojoToMap(req))).toList());
+                .map(a -> a.getApiTradingStatus(pojoToMap(req))).toList(), req);
     }
 
     /**
@@ -421,7 +421,7 @@ public class WalletClient extends RestClient<WalletMapping> {
      */
     public RequestExecutor<DustLog> getDustLog(DustLogRequest req) {
         return new RequestExecutor<>(getApis().stream()
-                .map(a -> a.getDustLog(pojoToMap(req))).toList());
+                .map(a -> a.getDustLog(pojoToMap(req))).toList(), req);
     }
 
     /**
@@ -445,7 +445,7 @@ public class WalletClient extends RestClient<WalletMapping> {
      */
     public RequestExecutor<DustTransferResponse> dustTransfert(DustTransferRequest req) {
         return new RequestExecutor<>(getApis().stream()
-                .map(a -> a.dustTransfert(pojoToMap(req))).toList());
+                .map(a -> a.dustTransfert(pojoToMap(req))).toList(), req);
     }
 
     /**
@@ -460,7 +460,7 @@ public class WalletClient extends RestClient<WalletMapping> {
      */
     public RequestExecutor<AssetDividendRecord> getAssetDividendRecord(AssetDividendRecordRequest req) {
         return new RequestExecutor<>(getApis().stream()
-                .map(a -> a.getAssetDividendRecord(pojoToMap(req))).toList());
+                .map(a -> a.getAssetDividendRecord(pojoToMap(req))).toList(), req);
     }
 
     /**
@@ -486,7 +486,7 @@ public class WalletClient extends RestClient<WalletMapping> {
      */
     public RequestExecutor<Map<String, AssetDetail>> getAssetDetail(AssetDetailRequest req) {
         return new RequestExecutor<>(getApis().stream()
-                .map(a -> a.getAssetDetail(pojoToMap(req))).toList());
+                .map(a -> a.getAssetDetail(pojoToMap(req))).toList(), req);
     }
 
     /**
@@ -510,7 +510,7 @@ public class WalletClient extends RestClient<WalletMapping> {
      */
     public RequestExecutor<List<TradeFee>> getTradeFee(TradeFeeRequest req) {
         return new RequestExecutor<>(getApis().stream()
-                .map(a -> a.getTradeFee(pojoToMap(req))).toList());
+                .map(a -> a.getTradeFee(pojoToMap(req))).toList(), req);
     }
 
     /**
@@ -548,7 +548,7 @@ public class WalletClient extends RestClient<WalletMapping> {
      */
     public RequestExecutor<WalletTransferResponse> transfer(WalletTransferRequest req) {
         return new RequestExecutor<>(getApis().stream()
-                .map(a -> a.transfer(pojoToMap(req))).toList());
+                .map(a -> a.transfer(pojoToMap(req))).toList(), req);
     }
 
     /**
@@ -580,7 +580,7 @@ public class WalletClient extends RestClient<WalletMapping> {
      */
     public RequestExecutor<WalletTransferHistory> getTransferHistory(WalletTransferHistoryRequest req) {
         return new RequestExecutor<>(getApis().stream()
-                .map(a -> a.getTransferHistory(pojoToMap(req))).toList());
+                .map(a -> a.getTransferHistory(pojoToMap(req))).toList(), req);
     }
 
     /**
@@ -597,7 +597,7 @@ public class WalletClient extends RestClient<WalletMapping> {
      */
     public RequestExecutor<List<FundingAsset>> getFundingAsset(FundingAssetRequest req) {
         return new RequestExecutor<>(getApis().stream()
-                .map(a -> a.getFundingAsset(pojoToMap(req))).toList());
+                .map(a -> a.getFundingAsset(pojoToMap(req))).toList(), req);
     }
 
     /**
