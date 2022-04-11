@@ -5,6 +5,7 @@
 ![Build Status develop](https://img.shields.io/github/workflow/status/binance4j/binance4j-wallet/Deploy%20Artifact%20on%20Maven%20then%20merge%20on%20main/deploy?label=Test)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![JDK](https://upload.wikimedia.org/wikipedia/commons/7/75/Blue_JDK_1.8%2B_Shield_Badge.svg)
+[![javadoc](https://img.shields.io/badge/javadoc-latest-informational)](https://binance4j.github.io/binance4j-wallet)
 
 Binance4j-wallet is a Java library providing an API for interacting with the Binance wallet endpoints.
 
@@ -263,5 +264,3 @@ List<TradeFee> fees = client.getTradeFee().execute();
 WalletTransferHistoryRequest req = new WalletTransferHistoryRequest(WalletTransferType.MAIN_FUNDING);
 WalletTransferHistory history = client.getTransferHistory(req).execute();
 ```
-
-[Javadoc](https://binance4j.github.io/binance4j-wallet/)
