@@ -3,7 +3,7 @@ package com.binance4j.wallet.client;
 import java.util.List;
 import java.util.Map;
 
-import com.binance4j.core.security.AuthenticationInterceptor;
+import com.binance4j.core.configuration.CoreConfiguration;
 import com.binance4j.wallet.accountstatus.AccountStatus;
 import com.binance4j.wallet.assetdetail.AssetDetail;
 import com.binance4j.wallet.assetdividendrecord.AssetDividendRecord;
@@ -40,7 +40,7 @@ public interface WalletMapping {
 	public static final String BASE_ASSET = BASE + "asset/";
 	public static final String BASE_CAPITAL = BASE + "capital/";
 	public static final String BASE_ACCOUNT = BASE + "account/";
-	public static final String SIGNED_H = AuthenticationInterceptor.ENDPOINT_SECURITY_TYPE_SIGNED_HEADER;
+	public static final String SIGNED_H = CoreConfiguration.ENDPOINT_SECURITY_TYPE_SIGNED_HEADER;
 
 	@GET(BASE + "system/status")
 	Call<SystemStatus> getSystemStatus();
