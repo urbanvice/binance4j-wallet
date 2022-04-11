@@ -6,6 +6,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![JDK](https://upload.wikimedia.org/wikipedia/commons/7/75/Blue_JDK_1.8%2B_Shield_Badge.svg)
 [![javadoc](https://img.shields.io/badge/javadoc-latest-informational)](https://binance4j.github.io/binance4j-wallet)
+[![binance doc](https://img.shields.io/badge/binance%20doc-public%20data-gold)](https://binance-docs.github.io/apidocs/spot/en/#wallet-endpoints)
 
 Binance4j-wallet is a Java library providing an API for interacting with the Binance wallet endpoints.
 
@@ -31,7 +32,7 @@ WalletClient client = new WalletClient(apiKy, apiSecret, useTestnet);
 
 ### Fetch the system status
 
-[Binance Documentation](https://binance-docs.github.io/apidocs/spot/en#system-status-system)
+[![binance doc](https://img.shields.io/badge/binance%20doc-wallet-gold)](https://binance-docs.github.io/apidocs/spot/en#system-status-system)
 
 ```java
 //sync
@@ -103,7 +104,7 @@ Next examples will only show the sync calls, the methods remain the same for eve
 
 ### Gets information of coins (available for deposit and withdraw) for user.
 
-[Binance Documentation](https://binance-docs.github.io/apidocs/spot/en/#all-coins-39-information-user_data)
+[![binance doc](https://img.shields.io/badge/binance%20doc-wallet-gold)](https://binance-docs.github.io/apidocs/spot/en/#all-coins-39-information-user_data)
 
 ```java
 List<CoinInformation> infos = client.getAllCoinsInfo().execute();
@@ -111,7 +112,7 @@ List<CoinInformation> infos = client.getAllCoinsInfo().execute();
 
 ### Fetch the daily SPOT account snapshots
 
-[Binance Documentation](https://binance-docs.github.io/apidocs/spot/en/#daily-account-snapshot-user_data)
+[![binance doc](https://img.shields.io/badge/binance%20doc-wallet-gold)](https://binance-docs.github.io/apidocs/spot/en/#daily-account-snapshot-user_data)
 
 ```java
 SpotAccountSnapshotResponse snapshot = client.getSpotAccountSnapshot().execute();
@@ -119,7 +120,7 @@ SpotAccountSnapshotResponse snapshot = client.getSpotAccountSnapshot().execute()
 
 ### Fetch the daily MARGIN account snapshots
 
-[Binance Documentation](https://binance-docs.github.io/apidocs/spot/en/#daily-account-snapshot-user_data)
+[![binance doc](https://img.shields.io/badge/binance%20doc-wallet-gold)](https://binance-docs.github.io/apidocs/spot/en/#daily-account-snapshot-user_data)
 
 ```java
 MarginAccountSnapshotResponse snapshot = client.getMarginAccountSnapshot().execute();
@@ -127,7 +128,7 @@ MarginAccountSnapshotResponse snapshot = client.getMarginAccountSnapshot().execu
 
 ### 
 
-[Binance Documentation](https://binance-docs.github.io/apidocs/spot/en/#daily-account-snapshot-user_data)
+[![binance doc](https://img.shields.io/badge/binance%20doc-wallet-gold)](https://binance-docs.github.io/apidocs/spot/en/#daily-account-snapshot-user_data)
 
 ```java
 FuturesAccountSnapshotResponse snapshot = client.getFuturesAccountSnapshot().execute();
@@ -135,7 +136,7 @@ FuturesAccountSnapshotResponse snapshot = client.getFuturesAccountSnapshot().exe
 
 ### Disable fast withdraw switch under your account
 
-[Binance Documentation](https://binance-docs.github.io/apidocs/spot/en/#disable-fast-withdraw-switch-user_data)
+[![binance doc](https://img.shields.io/badge/binance%20doc-wallet-gold)](https://binance-docs.github.io/apidocs/spot/en/#disable-fast-withdraw-switch-user_data)
 
 ```java
 client.disableFastWithdrawSwitch(new FastWithdrawSwitchRequest()).execute();
@@ -143,7 +144,7 @@ client.disableFastWithdrawSwitch(new FastWithdrawSwitchRequest()).execute();
 
 ### Enable fast withdraw switch under your account
 
-[Binance Documentation](https://binance-docs.github.io/apidocs/spot/en/#enable-fast-withdraw-switch-user_data)
+[![binance doc](https://img.shields.io/badge/binance%20doc-wallet-gold)](https://binance-docs.github.io/apidocs/spot/en/#enable-fast-withdraw-switch-user_data)
 
 ```java
 client.enableFastWithdrawSwitch(new FastWithdrawSwitchRequest()).execute();
@@ -151,7 +152,7 @@ client.enableFastWithdrawSwitch(new FastWithdrawSwitchRequest()).execute();
 
 ### Submit a withdraw request
 
-[Binance Documentation](https://binance-docs.github.io/apidocs/spot/en/#withdraw-user_data)
+[![binance doc](https://img.shields.io/badge/binance%20doc-wallet-gold)](https://binance-docs.github.io/apidocs/spot/en/#withdraw-user_data)
 
 ```java
 WithdrawRequest req = new WithdrawRequest(symbol, address, amount);
@@ -160,7 +161,7 @@ WithdrawResult res = client.withdraw(req).execute();
 
 ### Fetch the deposit history of one or multiple coins
 
-[Binance Documentation](https://binance-docs.github.io/apidocs/spot/en/#deposit-history-supporting-network-user_data)
+[![binance doc](https://img.shields.io/badge/binance%20doc-wallet-gold)](https://binance-docs.github.io/apidocs/spot/en/#deposit-history-supporting-network-user_data)
 
 ```java
 List<DepositHistory> history = client.getDepositHistory().execute();
@@ -168,7 +169,7 @@ List<DepositHistory> history = client.getDepositHistory().execute();
 
 ### Fetch the withdraw history of all coins
 
-[Binance Documentation](https://binance-docs.github.io/apidocs/spot/en/#withdraw-history-supporting-network-user_data)
+[![binance doc](https://img.shields.io/badge/binance%20doc-wallet-gold)](https://binance-docs.github.io/apidocs/spot/en/#withdraw-history-supporting-network-user_data)
 
 ```java
 List<WithdrawHistory> history = client.getWithdrawHistory().execute();
@@ -176,7 +177,7 @@ List<WithdrawHistory> history = client.getWithdrawHistory().execute();
 
 ### Fetch deposit address
 
-[Binance Documentation](https://binance-docs.github.io/apidocs/spot/en/#deposit-address-supporting-network-user_data)
+[![binance doc](https://img.shields.io/badge/binance%20doc-wallet-gold)](https://binance-docs.github.io/apidocs/spot/en/#deposit-address-supporting-network-user_data)
 
 ```java
 DepositAddressRequest req = new DepositAddressRequest("BTC")
@@ -185,7 +186,7 @@ DepositAddress address = client.getDepositAddress(req).execute();
 
 ### Fetch the account status detail
 
-[Binance Documentation](https://binance-docs.github.io/apidocs/spot/en/#deposit-address-supporting-network-user_data)
+[![binance doc](https://img.shields.io/badge/binance%20doc-wallet-gold)](https://binance-docs.github.io/apidocs/spot/en/#deposit-address-supporting-network-user_data)
 
 ```java
 AccountStatus status = client.getAccountstatus().execute();
@@ -193,7 +194,7 @@ AccountStatus status = client.getAccountstatus().execute();
 
 ### Fetch the account api trading status detail
 
-[Binance Documentation](https://binance-docs.github.io/apidocs/spot/en/#account-api-trading-status-user_data)
+[![binance doc](https://img.shields.io/badge/binance%20doc-wallet-gold)](https://binance-docs.github.io/apidocs/spot/en/#account-api-trading-status-user_data)
 
 ```java
 ApiTradingStatus status = client.getApiTradingStatus().execute();
@@ -201,7 +202,7 @@ ApiTradingStatus status = client.getApiTradingStatus().execute();
 
 ### Fetch the dust tranfer logs
 
-[Binance Documentation](https://binance-docs.github.io/apidocs/spot/en/#dustlog-user_data)
+[![binance doc](https://img.shields.io/badge/binance%20doc-wallet-gold)](https://binance-docs.github.io/apidocs/spot/en/#dustlog-user_data)
 
 ```java
 DustLog log = client.getDustLog(new DustLogRequest()).execute();
@@ -209,7 +210,7 @@ DustLog log = client.getDustLog(new DustLogRequest()).execute();
 
 ### Convert dust assets to BNB
 
-[Binance Documentation](https://binance-docs.github.io/apidocs/spot/en/#dust-transfer-user_data)
+[![binance doc](https://img.shields.io/badge/binance%20doc-wallet-gold)](https://binance-docs.github.io/apidocs/spot/en/#dust-transfer-user_data)
 
 ```java
 DustTransferRequest req = new DustTransferRequest(assets);
@@ -218,7 +219,7 @@ DustTransferResponse res = client.dustTransfert(req).execute();
 
 ### Fetch the API Key Permission
 
-[Binance Documentation](https://binance-docs.github.io/apidocs/spot/en/#get-api-key-permission-user_data)
+[![binance doc](https://img.shields.io/badge/binance%20doc-wallet-gold)](https://binance-docs.github.io/apidocs/spot/en/#get-api-key-permission-user_data)
 
 ```java
 ApiPermissions permissions = client.getApiPermissions().execute();
@@ -226,7 +227,7 @@ ApiPermissions permissions = client.getApiPermissions().execute();
 
 ### Fetch the dividend record of all assets
 
-[Binance Documentation](https://binance-docs.github.io/apidocs/spot/en/#asset-dividend-record-user_data)
+[![binance doc](https://img.shields.io/badge/binance%20doc-wallet-gold)](https://binance-docs.github.io/apidocs/spot/en/#asset-dividend-record-user_data)
 
 ```java
 AssetDividendRecord record = client.getAssetDividendRecord().execute();
@@ -234,7 +235,7 @@ AssetDividendRecord record = client.getAssetDividendRecord().execute();
 
 ### Fetch the details of an asset supported on Binance
 
-[Binance Documentation](https://binance-docs.github.io/apidocs/spot/en/#asset-detail-user_data)
+[![binance doc](https://img.shields.io/badge/binance%20doc-wallet-gold)](https://binance-docs.github.io/apidocs/spot/en/#asset-detail-user_data)
 
 ```java
 Map<String, AssetDetail> details = client.getAssetDetail().execute();
@@ -242,7 +243,7 @@ Map<String, AssetDetail> details = client.getAssetDetail().execute();
 
 ### Fetch the funding wallet asset balance
 
-[Binance Documentation](https://binance-docs.github.io/apidocs/spot/en/#query-user-universal-transfer-history-user_data)
+[![binance doc](https://img.shields.io/badge/binance%20doc-wallet-gold)](https://binance-docs.github.io/apidocs/spot/en/#query-user-universal-transfer-history-user_data)
 
 ```java
 List<FundingAsset> fundings = client.getFundingAsset().execute();
@@ -250,7 +251,7 @@ List<FundingAsset> fundings = client.getFundingAsset().execute();
 
 ### Fetch the trade fee
 
-[Binance Documentation](https://binance-docs.github.io/apidocs/spot/en/#trade-fee-user_data)
+[![binance doc](https://img.shields.io/badge/binance%20doc-wallet-gold)](https://binance-docs.github.io/apidocs/spot/en/#trade-fee-user_data)
 
 ```java
 List<TradeFee> fees = client.getTradeFee().execute();
@@ -258,7 +259,7 @@ List<TradeFee> fees = client.getTradeFee().execute();
 
 ### Fetch the user universal transfer history
 
-[Binance Documentation](https://binance-docs.github.io/apidocs/spot/en/#query-user-universal-transfer-history-user_data)
+[![binance doc](https://img.shields.io/badge/binance%20doc-wallet-gold)](https://binance-docs.github.io/apidocs/spot/en/#query-user-universal-transfer-history-user_data)
 
 ```java
 WalletTransferHistoryRequest req = new WalletTransferHistoryRequest(WalletTransferType.MAIN_FUNDING);
