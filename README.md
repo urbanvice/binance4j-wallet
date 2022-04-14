@@ -18,7 +18,7 @@ Binance4j-wallet is a Java library providing an API for interacting with the Bin
 <dependency>
   <groupId>com.binance4j</groupId>
   <artifactId>binance4j-wallet</artifactId>
-  <version>1.1.4</version>
+  <version>1.1.5</version>
 </dependency>
 ```
 
@@ -102,7 +102,7 @@ client.getSystemStatus().then(new ApiCallback<SystemStatus>() {
 
 Next examples will only show the sync calls, the methods remain the same for every request.
 
-### Gets information of coins (available for deposit and withdraw) for user.
+### Gets information of coins (available for deposit and withdraw) for user
 
 [![binance doc](https://img.shields.io/badge/binance%20doc-wallet-gold)](https://binance-docs.github.io/apidocs/spot/en/#all-coins-39-information-user_data)
 
@@ -126,7 +126,7 @@ SpotAccountSnapshotResponse snapshot = client.getSpotAccountSnapshot().execute()
 MarginAccountSnapshotResponse snapshot = client.getMarginAccountSnapshot().execute();
 ```
 
-### 
+### Fetch the daily FUTURES account snapshots
 
 [![binance doc](https://img.shields.io/badge/binance%20doc-wallet-gold)](https://binance-docs.github.io/apidocs/spot/en/#daily-account-snapshot-user_data)
 
