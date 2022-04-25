@@ -38,7 +38,7 @@ WalletClient client = new WalletClient(apiKy, apiSecret, useTestnet);
 //sync
 try{
   SystemStatus status = client.getSystemStatus().execute();
-}catch(ApiNotReachedException e){ //404 error after trying to reach every server
+}catch(NotFoundException e){ //404 error after trying to reach every server
     //...
 }catch(FirewallException e){ //Web Application Firewall has been violated (HTTP 403)
     //...
