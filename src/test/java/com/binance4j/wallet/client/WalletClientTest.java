@@ -94,7 +94,7 @@ public class WalletClientTest {
             });
     }
 
-    @Test
+    // @Test
     @DisplayName("Properties shouldn't be null or throw an Exception")
     public void testGetMarginAccountSnapshot() throws InterruptedException, ExecutionException, ApiException {
             MarginAccountSnapshotResponse snapshot = client.getMarginAccountSnapshot().execute();
